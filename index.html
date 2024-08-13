@@ -1,45 +1,179 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image Slider | CodingNepal</title>
-    <!-- Google Fonts Link For Icons -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="slider-wrapper">
-        <button id="prev-slide" class="slide-button material-symbols-rounded">
-          chevron_left
-        </button>
-        <ul class="image-list">
-          <img class="image-item" src="images/img-1.jpg" alt="img-1" />
-          <img class="image-item" src="images/img-2.jpg" alt="img-2" />
-          <img class="image-item" src="images/img-3.jpg" alt="img-3" />
-          <img class="image-item" src="images/img-4.jpg" alt="img-4" />
-          <img class="image-item" src="images/img-5.jpg" alt="img-5" />
-          <img class="image-item" src="images/img-6.jpg" alt="img-6" />
-          <img class="image-item" src="images/img-7.jpg" alt="img-7" />
-          <img class="image-item" src="images/img-8.jpg" alt="img-8" />
-          <img class="image-item" src="images/img-9.jpg" alt="img-9" />
-          <img class="image-item" src="images/img-10.jpg" alt="img-10" />
-        </ul>
-        <button id="next-slide" class="slide-button material-symbols-rounded">
-          chevron_right
-        </button>
-      </div>
-      <div class="slider-scrollbar">
-        <div class="scrollbar-track">
-          <div class="scrollbar-thumb"></div>
-        </div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threshold 925 Silver - Pawn System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Threshold 925 Silver</h1>
+    </header>
+
+    <!-- Main Button -->
+    <section>
+        <button id="mainButton">Threshold 925 Silver</button>
+    </section>
+
+    <!-- Main Content Box -->
+    <div id="mainContentBox" style="display:none;">
+        <nav>
+            <button id="dashboardButton">Dashboard</button>
+            <button id="newLoanButton">New Loan</button>
+            <button id="customersButton">Customers</button>
+            <button id="redeemRenewButton">Redeem/Renew</button>
+            <button id="maintenanceButton">Maintenance</button>
+            <button id="historyButton">History</button>
+        </nav>
+
+        <!-- Dashboard Section -->
+        <section id="dashboardSection" style="display:none;">
+            <h2>Dashboard</h2>
+            <p>New Transactions: <span id="newTransactions">0</span></p>
+            <p>Today's Ratings: <span id="todaysRatings">0</span></p>
+            <p>Previous Sales: <span id="previousSales">0</span></p>
+            <p>Due List: <span id="dueList">No dues</span></p>
+        </section>
+
+        <!-- New Loan Section -->
+        <section id="newLoanSection" style="display:none;">
+            <h2>New Loan</h2>
+            <form id="newLoanForm">
+                <label for="pawnTicket">Pawn Ticket Number:</label>
+                <input type="text" id="pawnTicket" name="pawnTicket" readonly value="202401">
+
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" name="customerName" required>
+
+                <label for="customerAddress">Address:</label>
+                <input type="text" id="customerAddress" name="customerAddress" required>
+
+                <label for="itemType">Item Type:</label>
+                <select id="itemType" name="itemType" required>
+                    <option value="Earrings">Earrings</option>
+                    <option value="Necklace">Necklace</option>
+                    <option value="Bracelet">Bracelet</option>
+                    <option value="Ring">Ring</option>
+                </select>
+
+                <label for="renewable">Renewable:</label>
+                <select id="renewable" name="renewable" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="itemDescription">Item Description:</label>
+                <input type="text" id="itemDescription" name="itemDescription" required>
+
+                <label for="remarks">Remarks:</label>
+                <input type="text" id="remarks" name="remarks">
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="maturityDate">Maturity Date:</label>
+                <input type="date" id="maturityDate" name="maturityDate" required>
+
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="date" id="expiryDate" name="expiryDate" required>
+
+                <label for="interestRate">Interest Rate:</label>
+                <select id="interestRate" name="interestRate" required>
+                    <option value="10%">Standard (10%)</option>
+                </select>
+
+                <label for="principal">Principal:</label>
+                <input type="number" id="principal" name="principal" required>
+
+                <label for="interest">Interest:</label>
+                <input type="number" id="interest" name="interest" readonly>
+
+                <label for="total">Total:</label>
+                <input type="number" id="total" name="total" readonly>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Type</th>
+                            <th>Description</th>
+                            <th>Remarks</th>
+                            <th>Maturity Date</th>
+                            <th>Expiry Date</th>
+                            <th>Interest Rate</th>
+                            <th>Interest</th>
+                            <th>Principal</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="loanItemsTable">
+                        <!-- Rows will be added dynamically -->
+                    </tbody>
+                </table>
+
+                <button type="button" id="addPawnButton">Add Pawn</button>
+                <button type="reset">Cancel</button>
+            </form>
+            <button id="receiptButton" style="display:none;">Receipt</button> <!-- New Receipt Button -->
+        </section>
+
+        <!-- Customers Section -->
+        <section id="customersSection" style="display:none;">
+            <h2>Customers</h2>
+            <table id="customersTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Receipt</th> <!-- Updated Column for Receipt -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Customers will be added dynamically -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Redeem/Renew Section -->
+        <section id="redeemRenewSection" style="display:none;">
+            <h2>Redeem/Renew</h2>
+            <!-- Redeem and Renew functionalities will be here -->
+        </section>
+
+        <!-- Maintenance Section -->
+        <section id="maintenanceSection" style="display:none;">
+            <h2>Maintenance</h2>
+            <table id="maintenanceTable">
+                <thead>
+                    <tr>
+                        <th>Item Type</th>
+                        <th>Description</th>
+                        <th>Maturity Date</th>
+                        <th>Expiry Date</th>
+                        <th>Interest Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Items will be listed and editable here -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- History Section -->
+        <section id="historySection" style="display:none;">
+            <h2>History</h2>
+            <!-- Transaction history will be here -->
+        </section>
     </div>
-  </body>
+
+    <!-- Receipt Modal -->
+    <div id="receiptModal" style="display:none; flex-direction: column;">
+        <div id="receiptContent"></div>
+        <button id="printReceiptButton">Print</button>
+        <button id="closeReceiptButton">X</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
